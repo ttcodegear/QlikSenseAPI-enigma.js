@@ -1,5 +1,10 @@
 # QlikSenseAPI-enigma.js
 
+node --version
+
+v20.14.0
+
+
 npm install enigma.js ws
 
 
