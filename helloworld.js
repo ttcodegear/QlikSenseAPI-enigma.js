@@ -4,6 +4,7 @@ const require = createRequire(import.meta.url);
 const enigma = require("enigma.js");
 const schema = require("enigma.js/schemas/12.2015.0");
 const WebSocket = require("ws");
+const crypto = require("crypto");
 
 async function main() {
   const tenant = "xxxx.yy.qlikcloud.com";
@@ -13,7 +14,7 @@ async function main() {
   try {
     session = enigma.create({
       schema,
-      createSocket: () => new WebSocket(`wss://${tenant}/app/${appId}`, {
+      createSocket: () => new WebSocket(`wss://${tenant}/app/${appId}/identity/` + crypto.randomUUID(), {
         headers: { Authorization: `Bearer ${qcsApiKey}` }
       })
     });
